@@ -1,4 +1,4 @@
-const user = require("../api/components/users/networks");
+const user = require("../api/components/users/network");
 const auth = require("../api/components/auth/network");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDoc = require("../api/swagger.json");

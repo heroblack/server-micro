@@ -25,7 +25,14 @@ async function upsert(tabla, data) {
 }
 
 async function remove(tabla, id) {
-  db[tabla].splice(id, 1);
+  let users = await list(tabla, id);
+  let index = users.findIndex(user => user.id == id);
+  if (index == -1) {
+    //Promise.reject(new Error("id de usuario no encontrado"));
+    throw new Error("id no encontrado para eliminar.");
+    return;
+  }
+  return db[tabla].splice(index, 1);
 }
 
 async function query(tabla, q) {
